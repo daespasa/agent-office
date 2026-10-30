@@ -1,0 +1,377 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:agent-office:event:v1",
+  "title": "Agent Office event envelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "eventId",
+    "workspaceId",
+    "projectId",
+    "sequence",
+    "occurredAt",
+    "observedAt",
+    "source",
+    "mode",
+    "type",
+    "data"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "eventId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "mode": {
+      "enum": [
+        "demo",
+        "live"
+      ]
+    },
+    "type": {
+      "enum": [
+        "agent.availability.changed",
+        "attempt.state.changed",
+        "attempt.progress",
+        "approval.requested",
+        "approval.resolved",
+        "artifact.created",
+        "usage.reported",
+        "runtime.connection.changed",
+        "task.verification.changed"
+      ]
+    },
+    "occurredAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "mock",
+            "model",
+            "runtime",
+            "system"
+          ]
+        },
+        "runtimeSessionId": {
+          "type": "string"
+        },
+        "producerEventId": {
+          "type": "string"
+        }
+      }
+    },
+    "data": {
+      "type": "object"
+    },
+    "workspaceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "agentId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "taskId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attemptId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "correlationId": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "attempt.state.changed"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "state"
+            ],
+            "properties": {
+              "state": {
+                "enum": [
+                  "queued",
+                  "running",
+                  "waiting_approval",
+                  "cancel_requested",
+                  "succeeded",
+                  "failed",
+                  "cancelled"
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "state": {
+                      "const": "failed"
+                    }
+                  },
+                  "required": [
+                    "state"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "reason"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "taskId",
+          "attemptId",
+          "agentId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "approval.requested"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "approvalId",
+              "actionHash",
+              "expiresAt",
+              "summary"
+            ],
+            "properties": {
+              "approvalId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "actionHash": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "expiresAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "required": [
+          "taskId",
+          "attemptId",
+          "agentId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "approval.resolved"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "approvalId",
+              "decision"
+            ],
+            "properties": {
+              "approvalId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "decision": {
+                "enum": [
+                  "approved",
+                  "rejected",
+                  "expired"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "taskId",
+          "attemptId",
+          "agentId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "agent.availability.changed"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "availability"
+            ],
+            "properties": {
+              "availability": {
+                "enum": [
+                  "available",
+                  "busy",
+                  "offline",
+                  "unknown"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "agentId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "runtime.connection.changed"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "connected",
+                  "reconnecting",
+                  "disconnected"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "task.verification.changed"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": [
+              "status",
+              "evidenceRefs"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "not_run",
+                  "passed",
+                  "failed",
+                  "unknown"
+                ]
+              },
+              "evidenceRefs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "taskId"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1.0",
+  "workspace": {
+    "id": "demo-office",
+    "name": "Example Office",
+    "mode": "demo",
+    "bind": "127.0.0.1",
+    "budgetUsd": 0
+  },
+  "projects": [
+    {
+      "id": "example-project",
+      "name": "Example Project",
+      "root": "./local/example-project",
+      "memory": {
+        "adapter": "markdown",
+        "root": "./local/knowledge/example-project",
+        "access": "none"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "id": "mock-connection",
+      "adapter": "mock",
+      "enabled": true,
+      "model": "deterministic-fixture"
+    },
+    {
+      "id": "http-example",
+      "adapter": "compatible-http",
+      "enabled": false,
+      "model": "configure-supported-model-id",
+      "endpoint": "https://provider.example.invalid/v1",
+      "secretRef": "env:AO_EXAMPLE_API_KEY"
+    },
+    {
+      "id": "native-example",
+      "adapter": "anthropic",
+      "enabled": false,
+      "model": "configure-supported-model-id",
+      "secretRef": "env:AO_NATIVE_API_KEY"
+    }
+  ],
+  "runtimes": [
+    {
+      "id": "mock-runtime",
+      "adapter": "mock",
+      "enabled": true
+    }
+  ],
+  "agents": [
+    {
+      "id": "worker-builder",
+      "name": "Builder",
+      "projectId": "example-project",
+      "runtimeRef": "mock-runtime",
+      "connectionRef": "mock-connection",
+      "policy": {
+        "tools": [],
+        "network": "deny",
+        "maxCostUsd": 0
+      }
+    },
+    {
+      "id": "worker-reviewer",
+      "name": "Reviewer",
+      "projectId": "example-project",
+      "runtimeRef": "mock-runtime",
+      "connectionRef": "mock-connection",
+      "policy": {
+        "tools": [],
+        "network": "deny",
+        "maxCostUsd": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Agent Office — original composition study</title><desc id="desc">A proposed isometric office with project rooms, selectable workers, an activity bar and an evidence drawer. This is a static design schematic, not an application screenshot.</desc>
+<defs><pattern id="grid" width="80" height="40" patternUnits="userSpaceOnUse"><path d="M40 0L80 20L40 40L0 20Z" fill="none" stroke="#fff" stroke-opacity=".12"/></pattern></defs>
+<rect width="1200" height="720" rx="20" fill="#f5f0e5"/>
+<g font-family="system-ui, sans-serif"><text x="35" y="48" font-size="25" fill="#172b36" font-weight="700">Agent Office</text><text x="35" y="74" font-size="13" fill="#4b606c">Original design schematic · demo concept · not implemented</text>
+<rect x="725" y="25" width="110" height="30" rx="15" fill="#d9e9f0"/><text x="742" y="45" font-size="12" fill="#176b8a">2 workers</text>
+<rect x="855" y="98" width="315" height="565" rx="16" fill="#fff" stroke="#d5ddd8"/>
+<text x="880" y="138" font-size="18" font-weight="700" fill="#172b36">Builder · Example Project</text>
+<rect x="880" y="158" width="125" height="28" rx="14" fill="#e4f1e8"/><text x="895" y="177" font-size="12" fill="#197445">Completed · DEMO</text>
+<text x="880" y="224" font-size="14" fill="#172b36" font-weight="700">Prepare a project result</text>
+<text x="880" y="250" font-size="13" fill="#4b606c">Verification: not run</text>
+<path d="M891 285V414" stroke="#d5ddd8" stroke-width="2"/>
+<g fill="#176b8a"><circle cx="891" cy="286" r="5"/><circle cx="891" cy="339" r="5"/><circle cx="891" cy="392" r="5"/></g>
+<g font-size="13" fill="#172b36"><text x="910" y="291">Attempt started</text><text x="910" y="344">Synthetic artifact created</text><text x="910" y="397">Attempt completed</text></g>
+<rect x="880" y="445" width="265" height="90" rx="10" fill="#f5f7f8"/><text x="895" y="474" font-size="13" fill="#172b36" font-weight="700">Evidence</text><text x="895" y="500" font-size="12" fill="#4b606c">result.txt · synthetic fixture</text>
+<text x="880" y="580" font-size="12" fill="#4b606c">Same information in accessible list view.</text>
+<text x="880" y="603" font-size="12" fill="#4b606c">Animations never establish task success.</text>
+
+<polygon points="425,175.0 605,265.0 425,355.0 245,265.0" fill="#3e8b83" stroke="#f5f0e5" stroke-width="7"/>
+<polygon points="425,175.0 605,265.0 605,237.0 425,147.0" fill="#d8ccaa" stroke="#b3a98e"/>
+<text x="485.75" y="234.625" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">EXAMPLE PROJECT</text>
+<path d="M360.75 261.625l30 -15 30 15 -30 15Z" fill="#ad7952" stroke="#5b4b39"/><path d="M380.75 253.625v-20l22 8v20Z" fill="#d5e9ee" stroke="#172b36" stroke-width="2"/>
+<ellipse cx="355.25" cy="286.375" rx="12" ry="5" fill="#172b36" opacity=".2"/><path d="M347.25 281.375v-17q8-9 16 0v17" fill="#efb451"/><circle cx="355.25" cy="257.375" r="8" fill="#b87e5d"/>
+<circle cx="373.25" cy="244.375" r="9" fill="#197445" stroke="#fff" stroke-width="2"/><path d="M369.25 244.375l3 3 5-6" stroke="#fff" fill="none" stroke-width="2"/>
+<path d="M417.0 289.75l30 -15 30 15 -30 15Z" fill="#ad7952" stroke="#5b4b39"/><path d="M437.0 281.75v-20l22 8v20Z" fill="#d5e9ee" stroke="#172b36" stroke-width="2"/>
+<ellipse cx="411.5" cy="314.5" rx="12" ry="5" fill="#172b36" opacity=".2"/><path d="M403.5 309.5v-17q8-9 16 0v17" fill="#74c7c4"/><circle cx="411.5" cy="285.5" r="8" fill="#b87e5d"/>
+<polygon points="618.5,271.75 798.5,361.75 618.5,451.75 438.5,361.75" fill="#567b91" stroke="#f5f0e5" stroke-width="7"/>
+<polygon points="618.5,271.75 798.5,361.75 798.5,333.75 618.5,243.75" fill="#d8ccaa" stroke="#b3a98e"/>
+<text x="679.25" y="331.375" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">RESEARCH</text>
+<path d="M554.25 358.375l30 -15 30 15 -30 15Z" fill="#ad7952" stroke="#5b4b39"/><path d="M574.25 350.375v-20l22 8v20Z" fill="#d5e9ee" stroke="#172b36" stroke-width="2"/>
+<ellipse cx="548.75" cy="383.125" rx="12" ry="5" fill="#172b36" opacity=".2"/><path d="M540.75 378.125v-17q8-9 16 0v17" fill="#efb451"/><circle cx="548.75" cy="354.125" r="8" fill="#b87e5d"/>
+<path d="M610.5 386.5l30 -15 30 15 -30 15Z" fill="#ad7952" stroke="#5b4b39"/><path d="M630.5 378.5v-20l22 8v20Z" fill="#d5e9ee" stroke="#172b36" stroke-width="2"/>
+<ellipse cx="605.0" cy="411.25" rx="12" ry="5" fill="#172b36" opacity=".2"/><path d="M597.0 406.25v-17q8-9 16 0v17" fill="#74c7c4"/><circle cx="605.0" cy="382.25" r="8" fill="#b87e5d"/>
+<polygon points="231.5,271.75 411.5,361.75 231.49999999999997,451.75 51.49999999999994,361.75" fill="#69885e" stroke="#f5f0e5" stroke-width="7"/>
+<polygon points="231.5,271.75 411.5,361.75 411.5,333.75 231.5,243.75" fill="#d8ccaa" stroke="#b3a98e"/>
+<text x="292.25" y="331.375" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">KNOWLEDGE</text>
+<path d="M167.24999999999997 358.375l30 -15 30 15 -30 15Z" fill="#ad7952" stroke="#5b4b39"/><path d="M187.24999999999997 350.375v-20l22 8v20Z" fill="#d5e9ee" stroke="#172b36" stroke-width="2"/>
+<path d="M223.49999999999997 386.5l30 -15 30 15 -30 15Z" fill="#ad7952" stroke="#5b4b39"/><path d="M243.49999999999997 378.5v-20l22 8v20Z" fill="#d5e9ee" stroke="#172b36" stroke-width="2"/>
+<polygon points="425.0,368.5 605.0,458.50000000000006 425.0,548.5 244.99999999999997,458.50000000000006" fill="#89769b" stroke="#f5f0e5" stroke-width="7"/>
+<polygon points="425.0,368.5 605.0,458.50000000000006 605.0,430.50000000000006 425.0,340.5" fill="#d8ccaa" stroke="#b3a98e"/>
+<text x="485.75" y="428.125" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">NEXT PROJECT</text>
+<path d="M360.75 455.125l30 -15 30 15 -30 15Z" fill="#ad7952" stroke="#5b4b39"/><path d="M380.75 447.125v-20l22 8v20Z" fill="#d5e9ee" stroke="#172b36" stroke-width="2"/>
+<path d="M417.0 483.25l30 -15 30 15 -30 15Z" fill="#ad7952" stroke="#5b4b39"/><path d="M437.0 475.25v-20l22 8v20Z" fill="#d5e9ee" stroke="#172b36" stroke-width="2"/>
+<rect x="35" y="640" width="780" height="47" rx="12" fill="#fff" stroke="#d5ddd8"/><text x="55" y="669" font-size="13" fill="#172b36">Activity: Builder completed a demo task · Reviewer needs attention · Open evidence →</text>
+<text x="35" y="122" font-size="12" fill="#4b606c">Projects / rooms</text><text x="35" y="144" font-size="12" fill="#4b606c">Pan · Zoom · Locate worker · List view</text></g></svg>

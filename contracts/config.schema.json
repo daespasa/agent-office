@@ -1,0 +1,235 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "workspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "enum": [
+            "demo",
+            "live"
+          ]
+        },
+        "bind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "budgetUsd": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "mode",
+        "bind",
+        "budgetUsd"
+      ]
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "root": {
+            "type": "string",
+            "minLength": 1
+          },
+          "memory": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "adapter": {
+                "type": "string",
+                "minLength": 1
+              },
+              "root": {
+                "type": "string",
+                "minLength": 1
+              },
+              "access": {
+                "enum": [
+                  "none",
+                  "read",
+                  "read-write"
+                ]
+              }
+            },
+            "required": [
+              "adapter",
+              "root",
+              "access"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "root"
+        ]
+      }
+    },
+    "connections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "adapter": {
+            "type": "string",
+            "minLength": 1
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1
+          },
+          "endpoint": {
+            "type": "string",
+            "format": "uri"
+          },
+          "secretRef": {
+            "type": "string",
+            "pattern": "^(env|keychain):[A-Za-z0-9_.-]+$"
+          }
+        },
+        "required": [
+          "id",
+          "adapter",
+          "enabled",
+          "model"
+        ]
+      }
+    },
+    "runtimes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "adapter": {
+            "type": "string",
+            "minLength": 1
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "adapter",
+          "enabled"
+        ]
+      }
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "runtimeRef": {
+            "type": "string",
+            "minLength": 1
+          },
+          "connectionRef": {
+            "type": "string",
+            "minLength": 1
+          },
+          "policy": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "tools": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "network": {
+                "enum": [
+                  "deny",
+                  "allowlist"
+                ]
+              },
+              "maxCostUsd": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "tools",
+              "network",
+              "maxCostUsd"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "projectId",
+          "runtimeRef",
+          "connectionRef",
+          "policy"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "workspace",
+    "projects",
+    "connections",
+    "runtimes",
+    "agents"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:agent-office:config:v1",
+  "title": "Agent Office project configuration v1"
+}
